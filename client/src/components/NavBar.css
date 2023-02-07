@@ -1,0 +1,202 @@
+
+
+.navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 50;
+    padding-left: 2rem;
+    padding-right: 50px;
+    height: 3.625rem;
+    font-size: 0.9rem;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.725);
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(33, 40, 50, 0.544) !important;
+    flex-wrap: nowrap;
+    display: flex;
+    align-items: center;
+    padding-top: 0rem;
+    padding-bottom: 0.5rem;
+    box-sizing: border-box;
+    color: aliceblue;
+}
+
+.navbar-brand {
+    box-sizing: border-box;
+    color: aliceblue;
+    cursor: pointer;
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    height: 34px;
+    line-height: 24px;
+    margin-right: 0;
+    padding: 5px 9px 5px 16px;
+    text-align: start;
+    width: 192px;
+    text-decoration-line: none;
+    text-decoration-style: solid;
+    margin: 0;
+    cursor: pointer;
+}
+
+.input-group {
+    align-items: stretch;
+    background-color: rgb(238, 242, 248);
+    box-sizing: border-box;
+    color: gray;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 14.4px;
+    font-weight: 400;
+    height: 2.5rem;
+    position: relative;
+    text-align: start;
+    text-size-adjust: 100%;
+    width: 30rem;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    align-items: center;
+    align-content: center;
+    border-radius: 5px;
+}
+
+.input-group>input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    position: relative;
+    flex: 1 1 auto;
+    width: 100px;
+    min-width: 0;
+    padding-right: 0 !important;
+    display: block;
+    padding: 0.875rem 1.125rem;
+    font-weight: 400;
+    line-height: 1;
+    color: gray;
+    background-clip: padding-box;
+    appearance: none;
+    border-radius: 0.35rem;
+    outline-offset: -2px;
+    margin: 0;
+    font-size: 1.5rem;
+
+}
+
+.input-group>input:focus-visible {
+    outline: none;
+}
+
+
+
+.input-group>button {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    padding-right: 0.5rem;
+    cursor: pointer;
+}
+.input-group>button>img {
+    height: 20px;
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+    box-sizing: border-box;
+
+
+}
+
+.nav-item {
+    position: relative;
+    display: block;
+    text-align: center;
+    list-style-type: none;
+    color: aliceblue;
+    text-decoration: none;
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+    font-size: 1.1rem;
+    background-color: rgba(240, 248, 255, 0.238);
+    margin-right: 0.5rem;
+}
+
+.logo {
+    height: 30px;
+    background-color: rgba(240, 248, 255, 0);
+    padding: 0px;
+    border-radius: 10px;
+    margin: 0;
+}
+
+@media only screen and (max-width: 1124px) {
+    .nav-item {
+        font-size: 1rem;
+    }
+    
+    .input-group {
+        width: 20rem;
+    }
+    
+    .navbar{
+        justify-content: space-evenly;
+    }
+}
+
+@media only screen and (max-width: 935px) {
+    .nav-item {
+        font-size: 0.8rem;
+        margin-right: 2px;
+    }
+    
+    .input-group {
+        width: 15rem;
+    }
+    
+    .navbar{
+        justify-content: space-evenly;
+    }
+}
+@media only screen and (max-width: 877px) {
+    .nav-item {
+        font-size: 0.8rem;
+    }
+    .navbar-brand{
+        display: none;
+    }
+    
+    .input-group {
+        width: 10rem;
+    }
+    
+    .navbar{
+        justify-content: space-evenly;
+    }
+}
+
+@media only screen and (max-width: 725px) {
+    .nav-item {
+        font-size: 0.8rem;
+    }
+    
+    .input-group {
+        width: 10rem;
+    }
+
+    .input-group>input{
+        font-size: 1rem;
+    }
+    
+    .navbar{
+        justify-content: space-evenly;
+    }
+    .input-group>button>img{
+        height: 15px;
+    }
+}

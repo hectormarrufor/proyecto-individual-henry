@@ -1,0 +1,49 @@
+.sidebar {
+    height: 100%;
+    width: 200px;
+    background-color: rgba(255, 255, 255, 0.822);
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    align-items: center;
+    text-align: start;
+    
+}
+
+.sidebar-item{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.sort-component{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sort-component > select {
+    margin-top: 10px;
+}
+
+.temperament-container{
+    background-color: whitesmoke;
+    padding: 20px;
+    margin: 0;
+    position:absolute;
+    display: flex;
+    flex-wrap: wrap;
+    border: 3px solid black;
+    /* min-height: 100px; */
+    max-height: 400px;
+    max-width: 1400px;
+    /* aspect-ratio: 1/1; */
+
+}
+
+.filter-item{
+    width: 190px;
+    text-align: start;
+}
+hr{
+    width: 80%;
+}

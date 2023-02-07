@@ -1,0 +1,60 @@
+.list-wrapper{
+    display: flex;
+    border-radius: 0.5rem;
+    border: 2px solid gray;
+    background-color: rgba(0, 0, 0, 0.414);
+    margin:0;
+
+}
+
+
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+}
+
+.card > img {
+    max-width: 100%;
+    max-height: 200px;
+    height: auto;
+    width: auto;
+    padding: 0;
+}
+
+.breed-card {
+    padding: 0;
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.breed-card > p {
+    position: relative;
+    top: -20px;
+    left: 70px;
+
+}
+
+.breed-card:hover {
+    transition: 0.3s;
+    transform: scale(1.015);
+    cursor: pointer;
+}
+
+.flex-content{
+    display: flex;
+}
+
+
+
+
+@media only screen and (max-width: 782px) {
+
+}

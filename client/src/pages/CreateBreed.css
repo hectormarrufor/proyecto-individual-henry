@@ -1,0 +1,13 @@
+.checkbox-box {
+    display: flex;
+    flex-direction: column;
+    
+    flex-wrap: wrap;
+    width: 100%;
+    height: 40vh;
+    border: 2px solid black;
+}
+
+.checkbox {
+    padding-right: 0.5rem;
+}

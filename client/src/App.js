@@ -1,9 +1,20 @@
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import LandingPage from './pages/LandingPage';
+import CreateBreed from './pages/CreateBreed';
 
 function App() {
   return (
     <div className="App">
-      <h1>Henry Dogs</h1>
+      
+
+        <Routes>
+          <Route path = "/" element ={<LandingPage/>}/>
+          <Route path = "/home" element = {<HomePage/>}/>
+          <Route path = "/create" element = {<CreateBreed />}/>
+        </Routes>
+      
+      
     </div>
   );
 }
