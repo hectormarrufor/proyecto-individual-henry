@@ -102,7 +102,6 @@ const DogDetail = ({ setActiveID, id, dogArray, popupMessage }) => {
                     }
                     else {
                         if (dog.comesFrom === 'API') {
-                            console.log('entrando a guardar el perro desde la API a la DB')
                             let weight = { imperial: dog.weight.imperial, metric: dog.weight.metric }
                             let height = { imperial: dog.height.imperial, metric: dog.height.metric }
                             await axios.post('http://localhost:3001/dogs/create', {

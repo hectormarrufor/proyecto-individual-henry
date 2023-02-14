@@ -23,7 +23,8 @@ const CreateBreed = () => {
             weightImperialMaximum: false,
             weightMetricMinimum: false,
             weightMetricMaximum: false,
-        }
+        },
+        fillError: false
     })
     const navigate = useNavigate();
     const location = useLocation().state;
@@ -91,7 +92,7 @@ const CreateBreed = () => {
         temperament: [],
         origin: '',
         image_url: '',
-        comesFrom: '',
+        comesFrom: 'not defined yet',
         favorite: false,
         id: freeId
     };
@@ -291,8 +292,33 @@ const CreateBreed = () => {
         });
 
     }
-    let filter = dogs.filter(x => x.name?.toLowerCase().includes(name?.toLowerCase()))
+    let filter = dogs.filter(x => x.name?.toLowerCase().includes(name?.toLowerCase()));
 
+
+    useEffect(() => {
+      
+        let fillErrorCounter =0;
+        for(let field of Object.values(dogInfo)) {
+    
+            if (typeof(field) === 'object'){
+                if(Array.isArray(field)){
+                    field.length === 0 && fillErrorCounter++
+                } 
+                else{
+                   if (Object.values(field).find(x => x == '')) fillErrorCounter++;
+                }
+            }
+            else {
+                if (field === '') fillErrorCounter++;
+            }
+        } 
+        (fillErrorCounter === 0) ? setErrors({...errors, fillError: false}) : setErrors({...errors, fillError: true})
+    }, [dogInfo])
+    
+
+        
+    
+    
     return (
         <>
             <div className="content-wrapper ">
@@ -436,9 +462,13 @@ const CreateBreed = () => {
                                 }
                                 )}
                                 </div>
+                                {dogInfo.temperament.length === 0 && <h3 className="error">At least one temperament must be chosen</h3>}
                             </div>
                             <button type="submit" className="btn btn-primary" disabled={(Object.values(errors).find(x => x === true) || Object.values(errors.unitError).find(x => x === true)) ? 'disabled' : ''}>{dogInfo.comesFrom === 'DB' ? "Update" : "Create"}</button>
-                                {(Object.values(errors).find(x => x === true) || Object.values(errors.unitError).find(x => x === true)) && <h3 className="error">There are errors on some form fields</h3>}
+                                
+                                {
+                                errors.fillError? <h3 className="error">All form fields must be filled</h3> :
+                                ((Object.values(errors).find(x => x === true) || Object.values(errors.unitError).find(x => x === true)) && <h3 className="error">There are errors on some form fields</h3>)}
                         </form>
                     </div>
                 </div>

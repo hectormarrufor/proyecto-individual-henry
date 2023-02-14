@@ -165,7 +165,6 @@ const SideBar = ({ temperaments, setTemperaments, weightChoices, setWeightChoice
     const temperament = useRef(null)
     const showHideTemperaments = (e) => {
         // e.preventDefault();
-        console.log(click);
         if (e.target.checked === false ) {
             temperament.current.className = 'hidden';
             i++;
@@ -192,7 +191,7 @@ const SideBar = ({ temperaments, setTemperaments, weightChoices, setWeightChoice
             <div className='filter-component sidebar-item'>
                 <h3>Filter by:</h3>
                 <div className='temperament-selection sidebar-item'>
-                    <input type='checkbox' className='sidebar-item' onClick={showHideTemperaments} value="Temperaments" name='temperaments' checked = {temperaments.find(x => x.isActive) ? 'checked' : ''}/>
+                    <input type='checkbox' className='sidebar-item' onChange={showHideTemperaments} value="Temperaments" name='temperaments' checked = {temperaments.find(x => x.isActive) ? 'checked' : ''}/>
                     <label htmlFor="temperaments" style={{cursor: 'pointer'}} onClick = {() => (temperament.current.className === 'temperament-container card') ?temperament.current.className = 'hidden' :temperament.current.className = 'temperament-container card'}>Temperaments 🠻</label>
                     <div className="hidden" ref={temperament}>
                         {temperaments?.map(temperament => {
@@ -229,11 +228,11 @@ const SideBar = ({ temperaments, setTemperaments, weightChoices, setWeightChoice
                 <div className="comesFrom-selection sidebar-item">
                     <h4 className="sidebar-item">Stored at:</h4>
                     <div className='filter-item'>
-                        <input type="checkbox" name="API" onClick={(e) => setStoredAtChoice ({...storedAtChoice, [`${e.target.name}`]: e.target.checked})} />
+                        <input type="checkbox" name="API" onChange={(e) => setStoredAtChoice ({...storedAtChoice, [`${e.target.name}`]: e.target.checked})} />
                         <label htmlFor="API">External API</label>
                     </div>
                     <div className='filter-item'>
-                        <input type="checkbox" name="DB" onClick={(e) => setStoredAtChoice  ({...storedAtChoice, [`${e.target.name}`]: e.target.checked})} />
+                        <input type="checkbox" name="DB" onChange={(e) => setStoredAtChoice  ({...storedAtChoice, [`${e.target.name}`]: e.target.checked})} />
                         <label htmlFor="DB">Internal Database</label>
                     </div>
                     
@@ -243,7 +242,7 @@ const SideBar = ({ temperaments, setTemperaments, weightChoices, setWeightChoice
                 <div className="favorite-selection sidebar-item">
                     <h4 className="sidebar-item">Favorites:</h4>
                     <div className='filter-item'>
-                        <input type="checkbox" name="fav" onClick={(e) => setFavorited (e.target.checked)} />
+                        <input type="checkbox" name="fav" onChange={(e) => setFavorited (e.target.checked)} />
                         <label htmlFor="fav">Show only favorited</label>
                     </div>
                    

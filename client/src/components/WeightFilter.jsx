@@ -11,7 +11,7 @@ const WeightFilter = ({setWeightChoices, weightChoices, value}) => {
 
     return (
         <div className='filter-item'>
-            <input type="checkbox" name={value} id={value} onClick={handleClick} checked={weightChoices.find(x => x.value === value).isActive === true ? 'checked' : ''}/>
+            <input type="checkbox" name={value} id={value} onChange={handleClick} checked={weightChoices.find(x => x.value === value).isActive === true ? 'checked' : ''}/>
             <label htmlFor={value}>{value + addedInfo}</label>
         </div>
     )
