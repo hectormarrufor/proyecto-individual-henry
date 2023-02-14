@@ -28,6 +28,7 @@
       font-weight: 700;
       line-height: 2rem;
       margin-bottom: 2rem;
+      min-height: 60px;
     }
     header.masthead .masthead-subheading {
       font-size: 1.25rem;

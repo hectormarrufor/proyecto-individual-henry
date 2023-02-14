@@ -4,6 +4,7 @@
     border: 2px solid gray;
     background-color: rgba(0, 0, 0, 0.414);
     margin:0;
+    min-height: 92vh;
 
 }
 
@@ -16,7 +17,7 @@
     align-content: flex-start;
 }
 
-.card > img {
+.card > .dog-card-img {
     max-width: 100%;
     max-height: 200px;
     height: auto;
@@ -26,6 +27,7 @@
 
 .breed-card {
     padding: 0;
+    position: relative;
     width: 250px;
     height: 300px;
     display: flex;
@@ -52,7 +54,82 @@
     display: flex;
 }
 
+.stored-at{
+    position:absolute;
+    top: 0%;
+    left: 5%;
+}
+.heart{
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    width: 23px;
+    height: 20px;
+}
+.heart:hover{
+    transform: scale(1.43);
+    transition: 0.3s
+}
+.span-saved{
+    position: absolute;
+    bottom: 1%;
+    color: rgb(153, 153, 153);
+    font-size: 0.7rem;
+}
+.list-controller{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.page-controller{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: aliceblue;
+    padding: 0.5rem;
+    width: calc(100% - 200px);
+    box-sizing: border-box;
+    margin: 0;
+    position: fixed;
+    bottom: 0px;
+    left:200px;
+}
 
+.page-controller-item{
+    margin-right:4px ;
+}
+
+.page-controller-item.btn-nextt{
+    position: absolute;
+  top: 30%;
+    right: 40%;
+}
+.page-controller-item.btn-previous{
+    position: absolute;
+   top: 30%;
+   left: 40%;
+}
+
+
+
+@keyframes fade {
+  0%,100% { opacity: 0 }
+  50% { opacity: 1 }
+}
+
+.popup{
+    opacity: 1;
+    animation: fade 5s ease-in-out;
+    position: fixed;
+    top: 5%;
+    left: 5%;
+    background-color: aliceblue;
+    border-radius: 0.5rem;
+    z-index: 1000;
+    padding: 10px;
+
+}
 
 
 @media only screen and (max-width: 782px) {

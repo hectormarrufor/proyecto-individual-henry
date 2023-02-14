@@ -5,11 +5,21 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('dog', {
     // Model attributes are defined here
-    weight: {
+    weight_metric: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    height: {
+    weight_imperial: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    height_metric: {
+
+        type: DataTypes.STRING,
+        allowNull: false,
+
+    },
+    height_imperial: {
 
         type: DataTypes.STRING,
         allowNull: false,
@@ -40,8 +50,12 @@ module.exports = (sequelize) => {
     origin: {
         type: DataTypes.STRING,
     },
-    reference_image_id: {
+    image_url: {
         type: DataTypes.STRING,
+    },
+    favorite: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     }
 });
 };

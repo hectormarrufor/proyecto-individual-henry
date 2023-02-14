@@ -3,6 +3,7 @@ import videoBg from '../assets/perros.mp4'
 import './LandingPage.css'
 
 const LandingPage = () => {
+    
 
     return (
         <div className="landing-page">
@@ -10,10 +11,10 @@ const LandingPage = () => {
             <header className="masthead">
                 <div className="card">
 
-                    <div className="masthead-heading">BIENVENIDO A NUESTRA PAGINA DE PERRITOS!</div>
-                    <div className="masthead-subheading">Es un gusto que te gusten tanto los perritos como a nosotros!</div>
-                    <div className="masthead-subheading">Aqui encontraras informacion de las diferentes razas de perro</div>
-                    <Link to = "/home" className="btn btn-primary btn-xl text-uppercase">Comencemos</Link>
+                    <div className="masthead-heading">Welcome to Doggies Network!</div>
+                    <div className="masthead-subheading">It is a pleasure that you like doggies as much as we do!</div>
+                    <div className="masthead-subheading">In this App, you will find information about all kind of dog breeds</div>
+                    <Link to = "/home" className="btn btn-primary btn-xl text-uppercase">Let's get started!</Link>
                     
                 </div>
             </header>

@@ -11,10 +11,10 @@ import axios from 'axios';
 
 let i = 0;
 
-const SideBar = ({temperaments, setTemperaments, weightChoices, setWeightChoices, heightChoices, setHeightChoices, setSort}) => {
+const SideBar = ({ temperaments, setTemperaments, weightChoices, setWeightChoices, heightChoices, setHeightChoices, setSort, storedAtChoice, setStoredAtChoice, favorited, setFavorited, click, perrosAPI }) => {
 
     const dispatch = useDispatch();
-    
+
     const { dogs, heights, weights } = useSelector(state => state.dogReducer);
     // const [temperaments, setTemperaments] = useState([]);
     // const [weightChoices, setWeightChoices] = useState([]);
@@ -28,8 +28,8 @@ const SideBar = ({temperaments, setTemperaments, weightChoices, setWeightChoices
         let temperamentsArray = [];
         let weightArray = [];
         let heightArray = [];
-        
-        
+
+
 
         //ITERATE OVER EVERY SEARCHED DOG, TO CALCULATE FILTER PARAMETERS!
         dogs?.forEach(dog => {
@@ -96,24 +96,24 @@ const SideBar = ({temperaments, setTemperaments, weightChoices, setWeightChoices
 
         weightArray = weightArray.map(x => parseFloat(x))
         weightArray.sort(compare);
-        weightArray.splice(1, weightArray.length-2);
+        weightArray.splice(1, weightArray.length - 2);
 
         // setWeight({ minimum: weightArray[0], maximum: weightArray[1] });
 
-        
-       
+
+
 
         heightArray = heightArray.map(x => parseFloat(x));
         heightArray.sort(compare);
-        heightArray.splice(1, heightArray.length-2);
+        heightArray.splice(1, heightArray.length - 2);
 
         // setHeight({ minimum: heightArray[0], maximum: heightArray[1] })
 
 
         temperamentsArray.sort()
-        i===1 && dispatch(setTemperamentsOnStore(temperamentsArray));
+        i === 1 && dispatch(setTemperamentsOnStore(temperamentsArray));
         // axios.post('http://localhost:3001/temperaments/setTemperaments/', temperamentsArray);
-        
+
         temperamentsArray = temperamentsArray.map(x => { return ({ temperament: x, isActive: false }) });
 
         setTemperaments(temperamentsArray);
@@ -145,29 +145,39 @@ const SideBar = ({temperaments, setTemperaments, weightChoices, setWeightChoices
             heightArray[1] > heights.small[1] ?
                 heightArray[1] > heights.average[1] ?
                     setHeightChoices([{ value: 'small', isActive: false }, { value: 'average', isActive: false }, { value: 'tall', isActive: false }])
-                :
+                    :
                     setHeightChoices([{ value: 'small', isActive: false }, { value: 'average', isActive: false }])
-            :
+                :
                 setHeightChoices([{ value: 'small', isActive: false }])
-        :
+            :
             heightArray[0] < heights.average[1] ?
                 heightArray[1] > heights.average[1] ?
                     setHeightChoices([{ value: 'average', isActive: false }, { value: 'tall', isActive: false }])
-                :
+                    :
                     setHeightChoices([{ value: 'average', isActive: false }])
-            :
+                :
                 setHeightChoices([{ value: 'tall', isActive: false }])
-    }, [dogs])
+    }, [perrosAPI])
     const handleChange = (e) => {
         setSort(e.target.value)
     }
 
-   const temperament = useRef(null)
-   const showHideTemperaments = (e) => {
-       if(temperament.current.className == 'temperament-container card')  temperament.current.className = 'hidden';
-       else if(temperament.current.className == 'hidden') temperament.current.className = 'temperament-container card' 
-   }
+    const temperament = useRef(null)
+    const showHideTemperaments = (e) => {
+        // e.preventDefault();
+        console.log(click);
+        if (e.target.checked === false ) {
+            temperament.current.className = 'hidden';
+            i++;
+            setTemperaments([...temperaments].map(temp => {return {isActive: false, temperament: temp.temperament}}));
+    }
+        else if (e.target.checked === true) temperament.current.className = 'temperament-container card'
+        
+    }
 
+    const closeTemperaments = () => {
+        temperament.current.className = 'hidden'
+    }
     return (
         <div className="sidebar">
             <div className='sort-component sidebar-item'>
@@ -182,13 +192,15 @@ const SideBar = ({temperaments, setTemperaments, weightChoices, setWeightChoices
             <div className='filter-component sidebar-item'>
                 <h3>Filter by:</h3>
                 <div className='temperament-selection sidebar-item'>
-                    <h4 className='sidebar-item' onClick={showHideTemperaments}>Temperament:</h4>
+                    <input type='checkbox' className='sidebar-item' onClick={showHideTemperaments} value="Temperaments" name='temperaments' checked = {temperaments.find(x => x.isActive) ? 'checked' : ''}/>
+                    <label htmlFor="temperaments" style={{cursor: 'pointer'}} onClick = {() => (temperament.current.className === 'temperament-container card') ?temperament.current.className = 'hidden' :temperament.current.className = 'temperament-container card'}>Temperaments 🠻</label>
                     <div className="hidden" ref={temperament}>
                         {temperaments?.map(temperament => {
                             return (
-                                <TemperamentFilter key={temperament.temperament + i} {...temperament} setTemperaments={setTemperaments} temperaments={temperaments} />
+                                <TemperamentFilter className='temperament-container-item' key={temperament.temperament + i} {...temperament} setTemperaments={setTemperaments} temperaments={temperaments} />
                             )
                         })}
+                    <button className='btn btn-primary cornered' onClick={closeTemperaments}>Done</button>
                     </div>
 
                 </div>
@@ -196,7 +208,7 @@ const SideBar = ({temperaments, setTemperaments, weightChoices, setWeightChoices
                     <h4 className="sidebar-item">Weight:</h4>
                     {weightChoices.map(weight => {
                         return (
-                            <WeightFilter key={weight.value + i} value = {weight.value} setWeightChoices={setWeightChoices} weightChoices={weightChoices}/>
+                            <WeightFilter key={weight.value + i} value={weight.value} setWeightChoices={setWeightChoices} weightChoices={weightChoices} />
                         )
                     })}
 
@@ -208,9 +220,34 @@ const SideBar = ({temperaments, setTemperaments, weightChoices, setWeightChoices
                     <h4 className="sidebar-item">Height:</h4>
                     {heightChoices.map(height => {
                         return (
-                            <HeightFilter key={height.value + i} value={height.value} setHeightChoices={setHeightChoices} heightChoices={heightChoices}/>
+                            <HeightFilter key={height.value + i} value={height.value} setHeightChoices={setHeightChoices} heightChoices={heightChoices} />
                         )
                     })}
+
+
+                </div>
+                <div className="comesFrom-selection sidebar-item">
+                    <h4 className="sidebar-item">Stored at:</h4>
+                    <div className='filter-item'>
+                        <input type="checkbox" name="API" onClick={(e) => setStoredAtChoice ({...storedAtChoice, [`${e.target.name}`]: e.target.checked})} />
+                        <label htmlFor="API">External API</label>
+                    </div>
+                    <div className='filter-item'>
+                        <input type="checkbox" name="DB" onClick={(e) => setStoredAtChoice  ({...storedAtChoice, [`${e.target.name}`]: e.target.checked})} />
+                        <label htmlFor="DB">Internal Database</label>
+                    </div>
+                    
+
+
+                </div>
+                <div className="favorite-selection sidebar-item">
+                    <h4 className="sidebar-item">Favorites:</h4>
+                    <div className='filter-item'>
+                        <input type="checkbox" name="fav" onClick={(e) => setFavorited (e.target.checked)} />
+                        <label htmlFor="fav">Show only favorited</label>
+                    </div>
+                   
+                    
 
 
                 </div>

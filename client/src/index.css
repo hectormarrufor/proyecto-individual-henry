@@ -32,13 +32,13 @@
     transition: linear 0.2s;
     outline-style:outset;
     outline-width: 4px;
-    outline-color: rgb(71, 215, 255);
+    outline-color: #ffc800;
 }
 .focusable:hover{
   transition: linear 0.2s;
   outline-style:outset;
   outline-width: 4px;
-  outline-color: rgb(71, 215, 255);
+  outline-color: #ffc800;
 }
 
 

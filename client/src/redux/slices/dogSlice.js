@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     dogs: [],
+    backup: [],
     weights: {
         minimum: 6,
         maximum: 200,
@@ -26,14 +27,34 @@ export const dogSlice = createSlice({
         insert: (state, action) => {
          state.dogs = action.payload;
         },
+        insert_replacing: (state, action)=>{
+            action.payload?.forEach(dog => {
+                
+                let indexDogFromState = state.dogs.findIndex(stateDog => stateDog.id === dog.id);
+                if (indexDogFromState === -1){
+                    state.dogs.push(dog);
+                }
+                else {
+                    if (!state.backup.find(dog => dog.id === state.dogs[indexDogFromState].id) && state.dogs[indexDogFromState].comesFrom === 'API') state.backup.push(state.dogs[indexDogFromState]);
+                    state.dogs[indexDogFromState] = dog;
+                }
+            })
+        },
         setTemperamentsOnStore: (state, action) => {
             state.temperaments = action.payload;
+        },
+        restore_dog_from_api: (state, action)=> {
+            let id = action.payload;
+            let selectedDogIndex = state.dogs.findIndex(dog => dog.id === id);
+            let selectedBackupIndex = state.backup.findIndex(dog => dog.id === id);
+            state.dogs[selectedDogIndex] = state.backup[selectedBackupIndex];
+            state.backup.splice(selectedBackupIndex, 1)
         }
        
     },
 });
 
 // Action creators are generated for each case reducer function
-export const { insert , setTemperamentsOnStore} = dogSlice.actions
+export const { insert , setTemperamentsOnStore, insert_replacing, restore_dog_from_api} = dogSlice.actions
 
 export default dogSlice.reducer

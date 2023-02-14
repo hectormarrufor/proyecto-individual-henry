@@ -118,13 +118,24 @@
     display: block;
     text-align: center;
     list-style-type: none;
-    color: aliceblue;
+    color: rgb(181, 181, 181);
     text-decoration: none;
     padding: 0.3rem;
     border-radius: 0.3rem;
     font-size: 1.1rem;
     background-color: rgba(240, 248, 255, 0.238);
     margin-right: 0.5rem;
+}
+
+.nav-item:hover{
+    transform: scale(1.035);
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+
+.nav-item.active {
+    color: white;
+    background-color: rgba(240, 248, 255, 0.573);
 }
 
 .logo {
