@@ -8,6 +8,7 @@ import WeightFilter from './WeightFilter';
 import { useRef } from 'react';
 import { setTemperamentsOnStore } from '../redux/slices/dogSlice';
 import axios from 'axios';
+import arrow_down from '../assets/arrow-down.png'
 
 let i = 0;
 
@@ -192,7 +193,7 @@ const SideBar = ({ temperaments, setTemperaments, weightChoices, setWeightChoice
                 <h3>Filter by:</h3>
                 <div className='temperament-selection sidebar-item'>
                     <input type='checkbox' className='sidebar-item' onChange={showHideTemperaments} value="Temperaments" name='temperaments' checked = {temperaments.find(x => x.isActive) ? 'checked' : ''}/>
-                    <label htmlFor="temperaments" style={{cursor: 'pointer'}} onClick = {() => (temperament.current.className === 'temperament-container card') ?temperament.current.className = 'hidden' :temperament.current.className = 'temperament-container card'}>Temperaments 🠻</label>
+                    <label htmlFor="temperaments" style={{cursor: 'pointer'}} onClick = {() => (temperament.current.className === 'temperament-container card') ?temperament.current.className = 'hidden' :temperament.current.className = 'temperament-container card'}>Temperaments <img src={arrow_down} height='10px'/></label>
                     <div className="hidden" ref={temperament}>
                         {temperaments?.map(temperament => {
                             return (
