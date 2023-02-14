@@ -1,13 +1,11 @@
 import './SideBar.css'
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from 'react';
-import { useState } from 'react';
 import TemperamentFilter from './TemperamentFilter';
 import HeightFilter from './HeightFilter';
 import WeightFilter from './WeightFilter';
 import { useRef } from 'react';
 import { setTemperamentsOnStore } from '../redux/slices/dogSlice';
-import axios from 'axios';
 import arrow_down from '../assets/arrow-down.png'
 
 let i = 0;

@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import arrowLeft from '../assets/arrow-left.png';
 import arrowRight from '../assets/arrow-right.png';
