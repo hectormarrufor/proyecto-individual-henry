@@ -55,7 +55,7 @@ const DogDetail = ({ setActiveID, id, dogArray, popupMessage }) => {
                 
                 }
                 else setActiveID(undefined);
-                axios.post(`http://localhost:3001/dogs/delete/${id}`)
+                axios.post(`${process.env.REACT_APP_API_URL}dogs/delete/${id}`)
                     .then(() => {
                         dispatch(restore_dog_from_api(id));
                         // window.location.reload(false)
@@ -83,7 +83,7 @@ const DogDetail = ({ setActiveID, id, dogArray, popupMessage }) => {
                         
                         }
                         else setActiveID(undefined);
-                        await axios.post('http://localhost:3001/dogs/update', {
+                        await axios.post(`${process.env.REACT_APP_API_URL}dogs/update`, {
                             name,
                             weight,
                             height,
@@ -104,7 +104,7 @@ const DogDetail = ({ setActiveID, id, dogArray, popupMessage }) => {
                         if (dog.comesFrom === 'API') {
                             let weight = { imperial: dog.weight.imperial, metric: dog.weight.metric }
                             let height = { imperial: dog.height.imperial, metric: dog.height.metric }
-                            await axios.post('http://localhost:3001/dogs/create', {
+                            await axios.post(`${process.env.REACT_APP_API_URL}dogs/create`, {
                                 name,
                                 weight,
                                 height,
@@ -123,7 +123,7 @@ const DogDetail = ({ setActiveID, id, dogArray, popupMessage }) => {
                         }
                         else {
 
-                            await axios.post('http://localhost:3001/dogs/update', {
+                            await axios.post(`${process.env.REACT_APP_API_URL}dogs/update`, {
                                 name,
                                 weight,
                                 height,

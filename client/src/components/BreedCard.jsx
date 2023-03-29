@@ -27,7 +27,7 @@ const BreedCard = ({ bred_for, breed_group, life_span, temperament, id, name, he
     const addRemoveFav = async (e) => {
         
         if (comesFrom === 'API') {
-            await axios.post('http://localhost:3001/dogs/create', {
+            await axios.post(`${process.env.REACT_APP_API_URL}dogs/create`, {
                 name,
                 weight: { imperial: weight.imperial, metric: weight.metric },
                 height:     { imperial: height.imperial, metric: height.metric },
@@ -43,7 +43,7 @@ const BreedCard = ({ bred_for, breed_group, life_span, temperament, id, name, he
             })
                 .then(console.log('updated')).catch(err => console.log(err.message))
         } else if (favorite === false) {
-                await  axios.post('http://localhost:3001/dogs/update', {
+                await  axios.post(`${process.env.REACT_APP_API_URL}dogs/update`, {
                     name,
                     weight,
                     height,
@@ -59,7 +59,7 @@ const BreedCard = ({ bred_for, breed_group, life_span, temperament, id, name, he
                 })
                     .then(console.log('updated')).catch(err => console.log(err.message))
             } else {
-            await  axios.post('http://localhost:3001/dogs/update', {
+            await  axios.post(`${process.env.REACT_APP_API_URL}dogs/update`, {
                 name,
                 weight,
                 height,

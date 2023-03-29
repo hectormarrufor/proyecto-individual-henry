@@ -111,7 +111,7 @@ const SideBar = ({ temperaments, setTemperaments, weightChoices, setWeightChoice
 
         temperamentsArray.sort()
         i === 1 && dispatch(setTemperamentsOnStore(temperamentsArray));
-        // axios.post('http://localhost:3001/temperaments/setTemperaments/', temperamentsArray);
+        // axios.post('${process.env.REACT_APP_API_URL}temperaments/setTemperaments/', temperamentsArray);
 
         temperamentsArray = temperamentsArray.map(x => { return ({ temperament: x, isActive: false }) });
 

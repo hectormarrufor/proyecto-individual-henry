@@ -45,7 +45,7 @@ const CreateBreed = () => {
     }, []);
 
     useEffect(() => {
-        axios.get('http://localhost:3001/temperaments')
+        axios.get(`${process.env.REACT_APP_API_URL}temperaments`)
             .then(data => setTemperaments(data.data));
 
     }, []);
@@ -234,7 +234,7 @@ const CreateBreed = () => {
         console.log(name, weight, height, bred_for, breed_group, life_span, temperament, origin);
         let selected = dogs.find(x => x.id === id);
         if (selected?.comesFrom == 'DB') {
-            axios.post('http://localhost:3001/dogs/update', {
+            axios.post(`${process.env.REACT_APP_API_URL}dogs/update`, {
                 name,
                 weight,
                 height,
@@ -253,7 +253,7 @@ const CreateBreed = () => {
             navigate('/home');
         }
         else {
-            axios.post('http://localhost:3001/dogs/create', {
+            axios.post(`${process.env.REACT_APP_API_URL}dogs/create`, {
                 name,
                 weight,
                 height,
