@@ -5,7 +5,7 @@ const fetchPerros = async () => {
 
     // if(queryparam == ''){
        
-        let perros = await fetch(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
+        let perros = await fetch(`https://api.thedogapi.com/v1/breeds?api_key=${REACT_APP_API_KEY}`);
         let response = await perros.json();
         response.forEach(dog => {
             dog.comesFrom = 'API';
