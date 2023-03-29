@@ -22,4 +22,4 @@ const fetchPerros = async () => {
     
 }
 
-module.exports = fetchPerros;
+export default fetchPerros;
